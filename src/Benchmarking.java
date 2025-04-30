@@ -20,7 +20,7 @@ public class Benchmarking {
 
     }
     private int[] generarArreglosAleatorio(int tamano) {
-        int[] array = new int[tamano];
+        int[] array = new int[tamano];            
         Random random = new Random();
         for(int i = 0; i < tamano; i++) {
             array[i] = random.nextInt(100000);
