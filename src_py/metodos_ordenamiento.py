@@ -12,16 +12,15 @@ class MetodosOrdenamiento:
     
     def sort_burbuja_mejorado_optimizado(self, array):
         arreglo = array.copy()
-        n = len(arreglo) ### sacar el tamaño del arreglo
+        n = len(arreglo)  # sacar el tamaño del arreglo
         for i in range(n):
             hubo_cambio = False
-            for j in range(j + 1, n - i - 1):
-                if arreglo[i] > arreglo[j + 1]:
-                    arreglo[i], arreglo[j + 1] = arreglo[j + 1], arreglo[i]
+            for j in range(0, n - i - 1):
+                if arreglo[j] > arreglo[j + 1]:
+                    arreglo[j], arreglo[j + 1] = arreglo[j + 1], arreglo[j]
                     hubo_cambio = True
-
-                if not hubo_cambio:
-                    break
+            if not hubo_cambio:
+                break  # Si no hubo cambios, el arreglo ya está ordenado
         return arreglo
 
     
@@ -39,4 +38,21 @@ class MetodosOrdenamiento:
 
         return arreglo
         
-        
+    
+    def sort_shell(self, array):
+        arreglo = array.copy()
+        n = len(arreglo)
+        gap = n // 2  
+
+        while gap > 0:
+            for i in range(gap, n):
+                temp = arreglo[i]
+                j = i
+                # Ordenar los elementos separados por gap
+                while j >= gap and arreglo[j - gap] > temp:
+                    arreglo[j] = arreglo[j - gap]
+                    j -= gap
+                    arreglo[j] = temp
+            gap //= 2  
+
+        return arreglo

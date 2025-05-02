@@ -4,9 +4,28 @@ import time
 
 
 class Benchmarking:
+    
     # public Benchmarking
     def __init__(self):
         print('Benchmarking instanciado')
+        self.mO = MetodosOrdenamiento()
+        arreglo = self.build_arreglo(10000)
+        
+    
+    
+    def build_arreglo(self, size):
+        return [random.randint(0, 10000) for _ in range(size)]
+    
+    
+    def medir_tiempo(self, funcion, arreglo):
+        inicio = time.perf_counter()
+        funcion(arreglo)
+        fin = time.perf_counter()
+        return (fin - inicio)
+        
+        
+    
+        """
         
         self.mO = MetodosOrdenamiento()
         
@@ -27,6 +46,10 @@ class Benchmarking:
         tarea = lambda: self.mO.sort_seleccion(arreglo)
         nanosegundos = self.contar_con_nano_time(tarea)
         print(f'Tiempo en nanosegundos con metodo seleccion: {nanosegundos}')
+        
+        tarea = lambda: self.mO.sort_shell(arreglo)
+        nanosegundos = self.contar_con_nano_time(tarea)
+        print(f'Tiempo en nanosegundos con metodo shell: {nanosegundos}')
         
         
     def build_arreglo(self, tamano):
@@ -53,7 +76,7 @@ class Benchmarking:
         fin = time.time_ns()
         return (fin - inicio)/ 1_000_000_000.0
     
-    
+    """
     
         
         
